@@ -121,11 +121,7 @@ struct ClaudeBarApp: App {
             providers: repository,
             alerter: quotaAlerter
         )
-        self.monitor = monitor
-        AppLog.monitor.info("QuotaMonitor initialized")
-
         let sessionMonitor = SessionMonitor()
-        self.sessionMonitor = sessionMonitor
 
         // The driver owns the menu-bar pixels and the refresh-loop lifecycle
         // (outside SwiftUI — see StatusItemLabelDriver). Pixels start flowing
@@ -135,6 +131,11 @@ struct ClaudeBarApp: App {
             settings: AppSettings.shared,
             sessionMonitor: sessionMonitor
         )
+
+        self.monitor = monitor
+        AppLog.monitor.info("QuotaMonitor initialized")
+        self.sessionMonitor = sessionMonitor
+
         statusItemDriver.startMonitoringLifecycle()
 
         // Load user extensions from ~/.claudebar/extensions/

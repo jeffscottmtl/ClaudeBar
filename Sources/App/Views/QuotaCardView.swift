@@ -92,7 +92,7 @@ struct QuotaCardView: View {
             }
         }
         .padding(12)
-        .background(Color.primary.opacity(0.05))
+        .background { Color.primary.opacity(0.05) }
         .cornerRadius(8)
     }
 }
